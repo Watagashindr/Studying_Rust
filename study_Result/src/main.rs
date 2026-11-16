@@ -27,4 +27,6 @@ fn main() {
         Ok(returnnum ) => println!("{}",returnnum),
         Err(returntext) => println!("{}",returntext),
     }
+
+    println!("test fuckyou");
 }
