@@ -75,6 +75,24 @@ fn double_num(num: i32) -> Result<i32,String> {
 
 }
 
+//?を試す
+fn double_num_question(num: i32) -> Result<i32, String> {
+    
+    let check = check_underzero(num)?;
+    let check2 = check_overhundred(check * 2)?;
+
+    return Ok(check2);
+}
+
+//and_then()を試す
+fn double_num_andthen(num: i32) -> Result<i32 , String> {
+
+    let check = check_underzero(num).and_then(|value| check_overhundred(value *2));
+
+    return check;
+
+}
+
 fn main() {
     match divide(2,5){
         Ok(returnnum ) => println!("{}",returnnum),
@@ -104,6 +122,11 @@ fn main() {
     }
 
     match double_num(51) {
+        Ok(value) => println!("{}", value),
+        Err(error) => println!("{}", error),
+    }
+
+    match double_num_question(51) {
         Ok(value) => println!("{}", value),
         Err(error) => println!("{}", error),
     }
