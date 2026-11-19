@@ -27,5 +27,12 @@ fn main() {
         }
 
         println!("secondloop end");//表示されない
+
+    }
+
+
+    //Range型
+    for number in  1..5 {
+        println!("{}",number);
     }
 }
