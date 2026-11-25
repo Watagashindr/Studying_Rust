@@ -1,4 +1,33 @@
 
+struct Counter {
+    current: usize,
+    max: usize,
+}
+
+impl Counter {
+    fn new(max: usize) -> Counter {
+        return Counter {
+            current: 0,
+            max: max,
+        }
+    }
+}
+
+impl Iterator for Counter {
+    type Item = usize;
+
+    fn next(&mut self) -> Option<Self::Item> {
+
+        if self.current < self.max {
+            let returnnum = self.current;
+            self.current += 1;
+            return Some(returnnum);
+            
+        }
+        return None;
+    }
+}
+
 fn main() {
 
     let numbers = vec![10,20,30];
@@ -34,17 +63,23 @@ fn main() {
     loop {
         let mut loopiter = looptest.next();
 
-        if loopiter % 2 == 0 {
-            println!("{:?}",loopiter);
-        }
-
-        if loopiter.to_string() == "None" ||  loopiter == 10 {
-            break;
+        match loopiter {
+            Some(value) => {
+                if value % 2 == 0 {
+                    println!("{}",value);
+                }
+            }
+            None => {
+                break;
+            }
         }
     }
 
 
+    let mut counter = Counter {
+        current : 0,
+        max: 5,
+    };
     
-
-
 }
+
