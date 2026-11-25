@@ -28,6 +28,28 @@ impl Iterator for Counter {
     }
 }
 
+fn sum_iterator(mut iter: impl Iterator<Item = i32>) -> i32 {
+
+    let mut sum = 0;
+
+    loop {
+        let num = iter.next();
+
+        match num {
+            Some(value) => {
+                sum += value;
+            }
+            None => {
+                break;
+            }
+        }
+
+    }
+
+    return sum;
+}
+
+
 fn main() {
 
     let numbers = vec![10,20,30];
@@ -81,5 +103,9 @@ fn main() {
         max: 5,
     };
     
+    let numbers3 = vec![10, 20, 30, 40];
+    let result3 = sum_iterator(numbers.into_iter());
+
+    println!("{}", result3); // 100
 }
 
