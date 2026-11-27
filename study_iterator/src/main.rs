@@ -107,5 +107,19 @@ fn main() {
     let result3 = sum_iterator(numbers.into_iter());
 
     println!("{}", result3); // 100
+
+
+    let mut iter1 = (10..=20).into_iter();
+    let mut iter2 = (0..0).into_iter();
+
+    println!("{:?}", get_first(&mut iter1));
+    println!("{:?}", get_first(&mut iter2));
+
 }
 
+
+fn get_first(iter: &mut impl Iterator<Item = i32>) -> Option<i32>{
+
+    return iter.next();
+    
+}
